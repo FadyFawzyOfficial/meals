@@ -1,16 +1,17 @@
-# meals
+# Meals 🍔🥗
 
-A new Flutter project.
+Meals App is a Flutter project.
+## Our Goal
 
-## Getting Started
+Meals App is for learning purpose.
+It's the 3nd App which in the 7th Section (Navigation & Multiple Screens [Meals APP]) of Flutter & Dart - The Complete Guide [2023 Edition] Course (On Udemy)
 
-This project is a starting point for a Flutter application.
+Flutter version: 3.7.10
 
-A few resources to get you started if this is your first Flutter project:
+Created & Developed by:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Eng.Fady Fawzy
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Mobile Application Developer
+
+FadyFawzy.Official@gmail.com
