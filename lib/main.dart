@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'screens/categories_screen.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -9,19 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'DeliMeals',
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('DeliMeals')),
-      body: const Center(child: Text('Navigation Time!')),
+      home: CategoriesScreen(),
     );
   }
 }
