@@ -11,7 +11,12 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => selectCategory(context),
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => CategoryMealsScreen(title: category.title),
+        ),
+      ),
       splashColor: Theme.of(context).primaryColor,
       borderRadius: const BorderRadius.all(Radius.circular(16)),
       child: Container(
@@ -34,7 +39,4 @@ class CategoryItem extends StatelessWidget {
       ),
     );
   }
-
-  void selectCategory(BuildContext context) => Navigator.push(
-      context, MaterialPageRoute(builder: (_) => const CategoryMealsScreen()));
 }
