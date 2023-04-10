@@ -40,6 +40,32 @@ class Meal {
     required this.isVegan,
     required this.isVegetarian,
   });
+
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.simple:
+        return 'Simple';
+      case Complexity.hard:
+        return 'Hard';
+      case Complexity.challenging:
+        return 'Challenging';
+      default:
+        return 'Unknown';
+    }
+  }
+
+  String get affordabilityText {
+    switch (affordability) {
+      case Affordability.affordable:
+        return 'Affordable';
+      case Affordability.pricey:
+        return 'Pricey';
+      case Affordability.luxurious:
+        return 'Expensive';
+      default:
+        return 'Unknown';
+    }
+  }
 }
 
 const dummyMeals = [
