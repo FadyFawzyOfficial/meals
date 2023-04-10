@@ -13,6 +13,7 @@ class CategoryItem extends StatelessWidget {
       onTap: () => Navigator.pushNamed(
         context,
         'categoryMeals',
+        arguments: category,
       ),
       splashColor: Theme.of(context).primaryColor,
       borderRadius: const BorderRadius.all(Radius.circular(16)),
