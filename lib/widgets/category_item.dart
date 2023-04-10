@@ -11,11 +11,10 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.push(
+      onTap: () => Navigator.pushNamed(
         context,
-        MaterialPageRoute(
-          builder: (_) => CategoryMealsScreen(title: category.title),
-        ),
+        CategoryMealsScreen.routeName,
+        arguments: category,
       ),
       splashColor: Theme.of(context).primaryColor,
       borderRadius: const BorderRadius.all(Radius.circular(16)),
