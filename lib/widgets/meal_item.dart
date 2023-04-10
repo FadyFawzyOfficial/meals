@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/meal.dart';
+import '../screens/meal_details_screen.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
@@ -17,7 +18,12 @@ class MealItem extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () => Navigator.pushNamed(
+          context,
+          MealDetailsScreen.routeName,
+          arguments: meal.id,
+        ),
+        splashColor: Theme.of(context).primaryColor,
         child: Column(
           children: [
             Stack(
