@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/category.dart';
+import '../screens/category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;
@@ -12,7 +13,7 @@ class CategoryItem extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.pushNamed(
         context,
-        'categoryMeals',
+        CategoryMealsScreen.routeName,
         arguments: category,
       ),
       splashColor: Theme.of(context).primaryColor,
