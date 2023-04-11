@@ -14,24 +14,13 @@ class CategoryMealsScreen extends StatefulWidget {
 }
 
 class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
-  late final Category category;
-  late List<Meal> categoryMeals;
-  var _loadedInitialList = false;
-
-  //! We can access the "context" here instead of initState(). But,
-  //? didChangeDependencies() runs a couple of times after the initialization
-  //? of State, that's the difference to initState() of course.
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (!_loadedInitialList) {
-      category = ModalRoute.of(context)!.settings.arguments as Category;
-      categoryMeals = dummyMeals
-          .where((meal) => meal.categories.contains(category.id))
-          .toList();
-      _loadedInitialList = true;
-    }
-  }
+  //! Fix the Previous Commit's Issue by Fady's Solution (My Solution).
+  //? use late while initializing the Variables values.
+  late final Category category =
+      ModalRoute.of(context)!.settings.arguments as Category;
+  late List<Meal> categoryMeals = dummyMeals
+      .where((meal) => meal.categories.contains(category.id))
+      .toList();
 
   @override
   Widget build(BuildContext context) {
