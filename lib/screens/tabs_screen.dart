@@ -3,14 +3,9 @@ import 'package:flutter/material.dart';
 import 'categories_screen.dart';
 import 'favorites_screen.dart';
 
-class TabsScreen extends StatefulWidget {
+class TabsScreen extends StatelessWidget {
   const TabsScreen({super.key});
 
-  @override
-  State<TabsScreen> createState() => _TabsScreenState();
-}
-
-class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
