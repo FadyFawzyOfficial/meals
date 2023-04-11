@@ -22,7 +22,7 @@ class MealItem extends StatelessWidget {
           context,
           MealDetailsScreen.routeName,
           arguments: meal.id,
-        ),
+        ).then((value) => print(value)),
         splashColor: Theme.of(context).primaryColor,
         child: Column(
           children: [
