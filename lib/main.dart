@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'models/filter.dart';
 import 'screens/category_meals_screen.dart';
 import 'screens/filters_screen.dart';
 import 'screens/meal_details_screen.dart';
 import 'screens/tabs_screen.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  var _filter = const Filter();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
               ),
               titleMedium: const TextStyle(
                 fontSize: 20,
-                fontFamily: 'RobotoCondensed',
+                // fontFamily: 'RobotoCondensed',
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -37,10 +40,14 @@ class MyApp extends StatelessWidget {
       initialRoute: '/', // default is '/'
       routes: {
         '/': (_) => const TabsScreen(),
-        CategoryMealsScreen.routeName: (_) => const CategoryMealsScreen(),
+        CategoryMealsScreen.routeName: (_) =>
+            CategoryMealsScreen(filter: _filter),
         MealDetailsScreen.routeName: (_) => const MealDetailsScreen(),
-        FiltersScreen.routeName: (_) => const FiltersScreen(),
+        FiltersScreen.routeName: (_) =>
+            FiltersScreen(filter: _filter, setFilter: _setFilter),
       },
     );
   }
+
+  void _setFilter(Filter filter) => _filter = filter;
 }
