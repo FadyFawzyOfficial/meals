@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'models/filter.dart';
 import 'screens/category_meals_screen.dart';
 import 'screens/filters_screen.dart';
 import 'screens/meal_details_screen.dart';
@@ -10,12 +11,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  var _filters = {
-    'Gluten': false,
-    'Lactose': false,
-    'Vegan': false,
-    'Vegetarian': false,
-  };
+  var _filter = const Filter();
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +41,13 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (_) => const TabsScreen(),
         CategoryMealsScreen.routeName: (_) =>
-            CategoryMealsScreen(filters: _filters),
+            CategoryMealsScreen(filter: _filter),
         MealDetailsScreen.routeName: (_) => const MealDetailsScreen(),
         FiltersScreen.routeName: (_) =>
-            FiltersScreen(filters: _filters, setFilters: _setFilters),
+            FiltersScreen(filter: _filter, setFilter: _setFilter),
       },
     );
   }
 
-  void _setFilters(Map<String, bool> filters) => _filters = filters;
+  void _setFilter(Filter filter) => _filter = filter;
 }
