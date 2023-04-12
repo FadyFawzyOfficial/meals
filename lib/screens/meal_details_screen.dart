@@ -2,11 +2,24 @@ import 'package:flutter/material.dart';
 
 import '../models/meal.dart';
 
-class MealDetailsScreen extends StatelessWidget {
+class MealDetailsScreen extends StatefulWidget {
   static const routeName = 'mealDetails';
 
-  const MealDetailsScreen({super.key});
+  final List<Meal> favoriteMeals;
+  final void Function(List<Meal> favoriteMeals) setFavoriteMeals;
 
+  const MealDetailsScreen({
+    super.key,
+    required this.favoriteMeals,
+    required this.setFavoriteMeals,
+  });
+
+  @override
+  State<MealDetailsScreen> createState() => _MealDetailsScreenState();
+}
+
+class _MealDetailsScreenState extends State<MealDetailsScreen> {
+  late List<Meal> favoriteMeals = widget.favoriteMeals;
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context)!.settings.arguments as String;
@@ -59,10 +72,21 @@ class MealDetailsScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.star),
+        onPressed: () => toggleFavorite(selectedMeal),
+        child: isFavoriteMeal(selectedMeal)
+            ? const Icon(Icons.star)
+            : const Icon(Icons.star_border),
       ),
     );
+  }
+
+  bool isFavoriteMeal(Meal meal) => favoriteMeals.contains(meal);
+
+  void toggleFavorite(Meal meal) {
+    setState(() => isFavoriteMeal(meal)
+        ? favoriteMeals.remove(meal)
+        : favoriteMeals.add(meal));
+    widget.setFavoriteMeals(favoriteMeals);
   }
 
   Container buildListContainer({required Widget child}) {
