@@ -5,17 +5,12 @@ import 'screens/filters_screen.dart';
 import 'screens/meal_details_screen.dart';
 import 'screens/tabs_screen.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  var filters = {
+  var _filters = {
     'Gluten': false,
     'Lactose': false,
     'Vegan': false,
@@ -50,14 +45,13 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (_) => const TabsScreen(),
         CategoryMealsScreen.routeName: (_) =>
-            CategoryMealsScreen(filters: filters),
+            CategoryMealsScreen(filters: _filters),
         MealDetailsScreen.routeName: (_) => const MealDetailsScreen(),
         FiltersScreen.routeName: (_) =>
-            FiltersScreen(filters: filters, setFilters: setFilters),
+            FiltersScreen(filters: _filters, setFilters: _setFilters),
       },
     );
   }
 
-  void setFilters(Map<String, bool> filters) =>
-      setState(() => this.filters = filters);
+  void _setFilters(Map<String, bool> filters) => _filters = filters;
 }
