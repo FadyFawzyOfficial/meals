@@ -5,13 +5,8 @@ import '../screens/meal_details_screen.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
-  final void Function({required String id}) removeItem;
 
-  const MealItem({
-    super.key,
-    required this.meal,
-    required this.removeItem,
-  });
+  const MealItem({super.key, required this.meal});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +22,6 @@ class MealItem extends StatelessWidget {
           context,
           MealDetailsScreen.routeName,
           arguments: meal.id,
-        ).then(
-          (mealId) {
-            if (mealId != null) removeItem(id: mealId as String);
-          },
         ),
         splashColor: Theme.of(context).primaryColor,
         child: Column(

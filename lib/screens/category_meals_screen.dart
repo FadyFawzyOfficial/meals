@@ -46,14 +46,8 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: filteredMeals.length,
-        itemBuilder: (context, index) => MealItem(
-          meal: filteredMeals[index],
-          removeItem: _removeMeal,
-        ),
+        itemBuilder: (context, index) => MealItem(meal: filteredMeals[index]),
       ),
     );
   }
-
-  void _removeMeal({required String id}) =>
-      setState(() => filteredMeals.removeWhere((meal) => meal.id == id));
 }
