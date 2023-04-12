@@ -7,8 +7,20 @@ import 'screens/tabs_screen.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var filters = {
+    'Gluten': false,
+    'Lactose': false,
+    'Vegan': false,
+    'Vegetarian': false,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +49,15 @@ class MyApp extends StatelessWidget {
       initialRoute: '/', // default is '/'
       routes: {
         '/': (_) => const TabsScreen(),
-        CategoryMealsScreen.routeName: (_) => const CategoryMealsScreen(),
+        CategoryMealsScreen.routeName: (_) =>
+            CategoryMealsScreen(filters: filters),
         MealDetailsScreen.routeName: (_) => const MealDetailsScreen(),
-        FiltersScreen.routeName: (_) => const FiltersScreen(),
+        FiltersScreen.routeName: (_) =>
+            FiltersScreen(filters: filters, setFilters: setFilters),
       },
     );
   }
+
+  void setFilters(Map<String, bool> filters) =>
+      setState(() => this.filters = filters);
 }
