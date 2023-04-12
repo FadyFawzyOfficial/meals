@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/category.dart';
 import '../models/filter.dart';
 import '../models/meal.dart';
-import '../widgets/meal_item.dart';
+import '../widgets/meals_list_view.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
   static const routeName = 'categoryMeals';
@@ -43,11 +43,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(category.title)),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: filteredMeals.length,
-        itemBuilder: (context, index) => MealItem(meal: filteredMeals[index]),
-      ),
+      body: MealsListView(meals: filteredMeals),
     );
   }
 }
