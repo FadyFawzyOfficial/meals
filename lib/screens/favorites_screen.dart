@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/meal.dart';
+import '../widgets/meals_list_view.dart';
 
 class FavoritesScreen extends StatelessWidget {
   final List<Meal> favoriteMeals;
@@ -9,12 +10,10 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return favoriteMeals.isEmpty
-        ? const Center(
-            child: Text('You have no favorites yet - start adding some!'),
-          )
+    return favoriteMeals.isNotEmpty
+        ? MealsListView(meals: favoriteMeals)
         : const Center(
-            child: Text('You have favorites - Build the Design !!!'),
+            child: Text('You have no favorites yet - start adding some!'),
           );
   }
 }
