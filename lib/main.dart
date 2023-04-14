@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'models/filter.dart';
+import 'models/meal.dart';
 import 'screens/category_meals_screen.dart';
 import 'screens/filters_screen.dart';
 import 'screens/meal_details_screen.dart';
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   var _filter = const Filter();
+  List<Meal> _favoriteMeals = [];
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +41,13 @@ class MyApp extends StatelessWidget {
       // home: const CategoriesScreen(),
       initialRoute: '/', // default is '/'
       routes: {
-        '/': (_) => const TabsScreen(),
+        '/': (_) => TabsScreen(favoriteMeals: _favoriteMeals),
         CategoryMealsScreen.routeName: (_) =>
             CategoryMealsScreen(filter: _filter),
-        MealDetailsScreen.routeName: (_) => const MealDetailsScreen(),
+        MealDetailsScreen.routeName: (_) => MealDetailsScreen(
+              favoriteMeals: _favoriteMeals,
+              setFavoriteMeals: _setFavoriteMeals,
+            ),
         FiltersScreen.routeName: (_) =>
             FiltersScreen(filter: _filter, setFilter: _setFilter),
       },
@@ -50,4 +55,7 @@ class MyApp extends StatelessWidget {
   }
 
   void _setFilter(Filter filter) => _filter = filter;
+
+  void _setFavoriteMeals(List<Meal> favoriteMeals) =>
+      _favoriteMeals = favoriteMeals;
 }
